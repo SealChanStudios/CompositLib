@@ -8,13 +8,13 @@
     </PropertyGroup>
     
     <ItemGroup>
-      <PackageReference Include="Chickensoft.AutoInject" Version="2.12.8" PrivateAssets="all" />
-      <PackageReference Include="Chickensoft.AutoInject.Analyzers" Version="2.12.8" PrivateAssets="all" />
-      <PackageReference Include="Chickensoft.Collections" Version="3.1.4" PrivateAssets="all" />
-      <PackageReference Include="Chickensoft.GodotNodeInterfaces" Version="3.0.12" PrivateAssets="all" />
-      <PackageReference Include="Chickensoft.Introspection" Version="3.0.2" PrivateAssets="all" />
-      <PackageReference Include="Chickensoft.Introspection.Generator" Version="3.0.2" PrivateAssets="all" />
-      <PackageReference Include="GodotSharp" Version="4.6.2" PrivateAssets="all" /> 
+      <PackageReference Include="Chickensoft.AutoInject" Version="2.12.8" PrivateAssets="All" />
+      <PackageReference Include="Chickensoft.AutoInject.Analyzers" Version="2.12.8" PrivateAssets="All" />
+      <PackageReference Include="Chickensoft.Collections" Version="3.1.4" PrivateAssets="All" />
+      <PackageReference Include="Chickensoft.GodotNodeInterfaces" Version="3.0.12" PrivateAssets="All" />
+      <PackageReference Include="Chickensoft.Introspection" Version="3.0.2" PrivateAssets="All" />
+      <PackageReference Include="Chickensoft.Introspection.Generator" Version="3.0.2" PrivateAssets="All" />
+      <PackageReference Include="GodotSharp" Version="4.6.2" PrivateAssets="All" /> 
     </ItemGroup>
 
     <PropertyGroup>
