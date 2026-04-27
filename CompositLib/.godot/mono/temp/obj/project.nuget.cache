@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "XUe8Fy+3krU=",
+  "success": true,
+  "projectFilePath": "C:\\Code\\CompositLib\\CompositLib\\CompositLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\chickensoft.autoinject\\2.12.8\\chickensoft.autoinject.2.12.8.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\chickensoft.autoinject.analyzers\\2.12.8\\chickensoft.autoinject.analyzers.2.12.8.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\chickensoft.collections\\3.1.4\\chickensoft.collections.3.1.4.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\chickensoft.introspection\\3.0.2\\chickensoft.introspection.3.0.2.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\chickensoft.introspection.generator\\3.0.2\\chickensoft.introspection.generator.3.0.2.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\godot.sourcegenerators\\4.6.1\\godot.sourcegenerators.4.6.1.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\godotsharp\\4.6.1\\godotsharp.4.6.1.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\godotsharpeditor\\4.6.1\\godotsharpeditor.4.6.1.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\minver\\4.3.0\\minver.4.3.0.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.2\\system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

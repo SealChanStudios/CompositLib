@@ -1,0 +1,391 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Chickensoft.AutoInject/2.12.8": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/AutoConnectExtensions.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/AutoConnector.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/IAutoConnect.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/NodeAttribute.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_init/src/auto_init/IAutoInit.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependencyAttribute.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependencyExceptions.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependencyResolver.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependentExtensions.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependentState.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/IDependent.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/PendingProvider.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/IProvide.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/IProvider.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/ProviderExtensions.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/ProviderState.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_node/src/auto_node/AutoNode.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_on/src/auto_on/IAutoOn.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/misc/src/misc/IReadyAware.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/notifications/src/notifications/NotificationExtensions.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          },
+          "contentFiles/cs/any/Chickensoft.AutoInjectsrc/notifications/src/notifications/NotificationState.cs": {
+            "buildAction": "Compile",
+            "codeLanguage": "cs",
+            "copyToOutput": false
+          }
+        }
+      },
+      "Chickensoft.AutoInject.Analyzers/2.12.8": {
+        "type": "package"
+      },
+      "Chickensoft.Collections/3.1.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.1.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Chickensoft.Collections.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Chickensoft.Collections.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Chickensoft.Introspection/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Chickensoft.Collections": "1.12.5"
+        },
+        "compile": {
+          "lib/netstandard2.1/Chickensoft.Introspection.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Chickensoft.Introspection.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Chickensoft.Introspection.Generator/3.0.2": {
+        "type": "package"
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/_._": {}
+        },
+        "runtime": {
+          "lib/net7.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Chickensoft.AutoInject/2.12.8": {
+      "sha512": "byZUlzq9zTeFmg5wVt6NcwIEkXtlLRUdW1VSBrivgcttY0KudfQZItUip9TbrSj1v0UbElbnLHtqLlCDJkvn0w==",
+      "type": "package",
+      "path": "chickensoft.autoinject/2.12.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "chickensoft.autoinject.2.12.8.nupkg.sha512",
+        "chickensoft.autoinject.nuspec",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/AutoConnectExtensions.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/AutoConnector.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/IAutoConnect.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_connect/src/auto_connect/NodeAttribute.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_init/src/auto_init/IAutoInit.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependencyAttribute.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependencyExceptions.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependencyResolver.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependentExtensions.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/DependentState.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/IDependent.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/dependent/src/auto_inject/dependent/PendingProvider.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/IProvide.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/IProvider.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/ProviderExtensions.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_inject/provider/src/auto_inject/provider/ProviderState.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_node/src/auto_node/AutoNode.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/auto_on/src/auto_on/IAutoOn.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/misc/src/misc/IReadyAware.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/notifications/src/notifications/NotificationExtensions.cs",
+        "contentFiles/cs/any/Chickensoft.AutoInjectsrc/notifications/src/notifications/NotificationState.cs",
+        "icon.png"
+      ]
+    },
+    "Chickensoft.AutoInject.Analyzers/2.12.8": {
+      "sha512": "UCCT4qd7BHz28kHINiPBVB+f6EjWVcwLtjs+g5jEUA+Xg8l+cb+6qT4ak1iZXA1EpGSmUKtsqz+87FmuC7qIFg==",
+      "type": "package",
+      "path": "chickensoft.autoinject.analyzers/2.12.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "analyzers/dotnet/cs/Chickensoft.AutoInject.Analyzers.dll",
+        "chickensoft.autoinject.analyzers.2.12.8.nupkg.sha512",
+        "chickensoft.autoinject.analyzers.nuspec",
+        "icon.png"
+      ]
+    },
+    "Chickensoft.Collections/3.1.4": {
+      "sha512": "uJubXYy9WZEkFFrX/ABkYr8Cth/03OVIam/h/oyxKu114oINuvH6lu0Mm9poXYlvR5JiRvdAmW1nJFZ8uJM9sw==",
+      "type": "package",
+      "path": "chickensoft.collections/3.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "chickensoft.collections.3.1.4.nupkg.sha512",
+        "chickensoft.collections.nuspec",
+        "icon.png",
+        "lib/netstandard2.1/Chickensoft.Collections.dll",
+        "lib/netstandard2.1/Chickensoft.Collections.xml"
+      ]
+    },
+    "Chickensoft.Introspection/3.0.2": {
+      "sha512": "L+6qrE3CO0XytxONoxTw1K4HKcZsuGSTAu2sb6UrDRQFlnDWkWViIktMlbqUdVjMr10mcQ3fet+27gBdTzqTgQ==",
+      "type": "package",
+      "path": "chickensoft.introspection/3.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "chickensoft.introspection.3.0.2.nupkg.sha512",
+        "chickensoft.introspection.nuspec",
+        "icon.png",
+        "lib/netstandard2.1/Chickensoft.Introspection.dll",
+        "lib/netstandard2.1/Chickensoft.Introspection.xml"
+      ]
+    },
+    "Chickensoft.Introspection.Generator/3.0.2": {
+      "sha512": "VuGC/pnt4KgTwrbAti8RePLzGTVkSSjemkFgDafjvn4gTWcggAWiwbnNUTsAx49wVINZ14HQ85E04AP3DEn2Vg==",
+      "type": "package",
+      "path": "chickensoft.introspection.generator/3.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "analyzers/dotnet/cs/Chickensoft.Introspection.Generator.dll",
+        "chickensoft.introspection.generator.3.0.2.nupkg.sha512",
+        "chickensoft.introspection.generator.nuspec",
+        "icon.png"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.1.2": {
+      "sha512": "2hBr6zdbIBTDE3EhK7NSVNdX58uTK6iHW/P/Axmm9sl1xoGSLqDvMtpecn226TNwHByFokYwJmt/aQQNlO5CRw==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "lib/net462/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net462/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net7.0/_._",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "Chickensoft.AutoInject >= 2.12.8",
+      "Chickensoft.AutoInject.Analyzers >= 2.12.8",
+      "Chickensoft.Collections >= 3.1.4",
+      "Chickensoft.Introspection >= 3.0.2",
+      "Chickensoft.Introspection.Generator >= 3.0.2"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Code\\SealChanStudios\\CompositLib\\CompositLib.csproj",
+      "projectName": "CompositLib",
+      "projectPath": "C:\\Code\\SealChanStudios\\CompositLib\\CompositLib.csproj",
+      "packagesPath": "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\",
+      "outputPath": "C:\\Code\\SealChanStudios\\CompositLib\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\vidar.ulvegrip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\godot\\Editors\\limboai+v1.7.0.godot-4.6.1.dotnet.editor.windows.x86_64\\GodotSharp\\Tools\\nupkgs": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/SealChanStudios/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "Chickensoft.AutoInject": {
+            "target": "Package",
+            "version": "[2.12.8, )"
+          },
+          "Chickensoft.AutoInject.Analyzers": {
+            "target": "Package",
+            "version": "[2.12.8, )"
+          },
+          "Chickensoft.Collections": {
+            "target": "Package",
+            "version": "[3.1.4, )"
+          },
+          "Chickensoft.Introspection": {
+            "target": "Package",
+            "version": "[3.0.2, )"
+          },
+          "Chickensoft.Introspection.Generator": {
+            "target": "Package",
+            "version": "[3.0.2, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Users\\vidar.ulvegrip\\.dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
