@@ -4,3 +4,4 @@ obj/*
 riderModule.iml
 /_ReSharper.Caches/
 CompositLib/.godot/*
+CompositLib/godot/*
