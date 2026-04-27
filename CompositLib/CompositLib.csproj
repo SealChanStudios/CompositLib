@@ -1,0 +1,34 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.6.1">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Chickensoft.AutoInject" Version="2.12.8" />
+      <PackageReference Include="Chickensoft.AutoInject.Analyzers" Version="2.12.8" />
+      <PackageReference Include="Chickensoft.Collections" Version="3.1.4" />
+      <PackageReference Include="Chickensoft.Introspection" Version="3.0.2" />
+      <PackageReference Include="Chickensoft.Introspection.Generator" Version="3.0.2" />
+    </ItemGroup>
+
+    <PropertyGroup>
+    <OutputPath>./nupkg</OutputPath>
+
+    <Title>CompositLib</Title>
+    <PackageId>SealChanStudios.CompositLib</PackageId>
+    <Authors>Lua-cat</Authors>
+    <Description>A Library for doing component based code</Description>
+
+
+
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MinVer" Version="4.3.0" PrivateAssets="All" />
+    </ItemGroup>
+
+</Project>
