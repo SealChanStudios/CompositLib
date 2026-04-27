@@ -1,0 +1,15 @@
+name: Release
+permissions:
+  contents: read
+  packages: write
+
+on:
+  push:
+
+jobs:
+  publish:
+    permissions:
+      contents: read
+      packages: write
+    uses: SealChanStudios/ci-templates/.github/workflows/nuget-minver.yml@main
+    secrets: inherit
