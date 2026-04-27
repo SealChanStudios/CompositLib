@@ -111,9 +111,9 @@ public static class ComponentExtensions
       return;
     }
 
-    if (!introspective.MixinState.Has<IComponentHostState>())
+    if (!introspective.MixinState.Has<ComponentHostState>())
     {
-      introspective.MixinState.Overwrite(new IComponentHostState());
+      introspective.MixinState.Overwrite(new ComponentHostState());
     }
   }
 

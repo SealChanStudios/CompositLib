@@ -185,6 +185,22 @@
           }
         }
       },
+      "GodotSharpEditor/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.6.0"
+        },
+        "compile": {
+          "lib/net8.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MinVer/4.3.0": {
         "type": "package",
         "build": {
@@ -349,6 +365,19 @@
         "lib/net8.0/GodotSharp.xml"
       ]
     },
+    "GodotSharpEditor/4.6.0": {
+      "sha512": "jpUfzyAJnG65kWsctfdXKTTPDGzv1eHVlGw/E5Fh5Axw8rGeklQJi0isAX1tBxPjcq/AuELYltpfOdUGc9f0kg==",
+      "type": "package",
+      "path": "godotsharpeditor/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "godotsharpeditor.4.6.0.nupkg.sha512",
+        "godotsharpeditor.nuspec",
+        "lib/net8.0/GodotSharpEditor.dll",
+        "lib/net8.0/GodotSharpEditor.xml"
+      ]
+    },
     "MinVer/4.3.0": {
       "sha512": "YNVAW3loCFW4kTwensApaZUl+7xREK75QQNOFSbsbXx2sCSm9/IHBjUHsJGn3u0UA5r/sAqrdYBNUlOFfLhUrA==",
       "type": "package",
@@ -421,6 +450,7 @@
       "Chickensoft.Introspection.Generator >= 3.0.2",
       "Godot.SourceGenerators >= 4.6.0",
       "GodotSharp >= 4.6.2",
+      "GodotSharpEditor >= 4.6.0",
       "MinVer >= 4.3.0"
     ]
   },
@@ -461,6 +491,9 @@
         }
       },
       "warningProperties": {
+        "noWarn": [
+          "NU5105"
+        ],
         "warnAsError": [
           "NU1605"
         ]
@@ -515,6 +548,11 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[4.6.2, )"
+          },
+          "GodotSharpEditor": {
+            "target": "Package",
+            "version": "[4.6.0, )",
+            "autoReferenced": true
           },
           "MinVer": {
             "suppressParent": "All",

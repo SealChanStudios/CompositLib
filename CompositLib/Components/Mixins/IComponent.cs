@@ -26,9 +26,14 @@ public interface IComponent : IMixin<IComponent>,IAutoNode
   static void SetComponentOwner<T>(IComponent component, IComponentHost owner) where T : IComponent
   {
     var state = component.MixinState.Get<ComponentState>();
+    var oldOwner = ComponentOwner(component);
     state.ComponentOwner = owner;
     state.ComponentType = typeof(T);
+    component.OnOwnershipTransferred(oldOwner);
+    
   }
+
+  void OnOwnershipTransferred(IComponentHost host) { }
 }
 
 public class ComponentState(IComponentHost componentOwner, Type componentType)

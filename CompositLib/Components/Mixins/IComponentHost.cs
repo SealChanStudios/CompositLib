@@ -34,7 +34,7 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
       throw new InvalidOperationException("Parent is not IComponentHost");
     }
 
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
 
     state.Components.Clear();
     state.ComponentNodes.Clear();
@@ -62,7 +62,7 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
       throw new InvalidOperationException("Parent is not IComponentHost");
     }
 
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
 
     if (state.Components.TryGetValue(typeof(T), out var cached))
     {
@@ -79,7 +79,7 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
       throw new InvalidOperationException("Parent is not IComponentHost");
     }
 
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
 
     return state.Components.ContainsKey(typeof(T));
   }
@@ -91,7 +91,7 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
       throw new InvalidOperationException("Parent is not IComponentHost");
     }
 
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
 
     return state.Components.Values.ToArray();
   }
@@ -111,7 +111,7 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
       return;
     }
 
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
 
     var key = ComponentTypeResolver.Resolve(typeof(T));
 
@@ -135,7 +135,7 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
       throw new InvalidOperationException("Parent is not IComponentHost");
     }
 
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
     var key = typeof(T);
 
     if (!state.ComponentNodes.TryGetValue(key, out var node))
@@ -156,13 +156,13 @@ public interface IComponentHost : IMixin<IComponentHost>,IAutoNode
     {
       throw new InvalidOperationException("Parent is not IComponentHost");
     }
-    var state = host.MixinState.Get<IComponentHostState>();
+    var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.Keys.ToArray();
   }
 
 }
 
-public class IComponentHostState
+public class ComponentHostState
 {
   public Dictionary<Type, IComponent> Components { get; } = new();
   public Dictionary<Type, Node> ComponentNodes{ get; } = new();

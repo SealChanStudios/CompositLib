@@ -14,9 +14,8 @@
       <PackageReference Include="Chickensoft.GodotNodeInterfaces" Version="3.0.12" PrivateAssets="All" />
       <PackageReference Include="Chickensoft.Introspection" Version="3.0.2" PrivateAssets="All" />
       <PackageReference Include="Chickensoft.Introspection.Generator" Version="3.0.2" PrivateAssets="All" />
-      <PackageReference Include="GodotSharp" Version="4.6.2" PrivateAssets="All" /> 
+      <PackageReference Include="GodotSharp" Version="4.6.2" PrivateAssets="All"/> 
     </ItemGroup>
-
     <PropertyGroup>
     <OutputPath>./nupkg</OutputPath>
 
