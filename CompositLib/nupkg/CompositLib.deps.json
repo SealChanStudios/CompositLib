@@ -1,0 +1,95 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CompositLib/1.0.7-alpha.0.1": {
+        "dependencies": {
+          "Chickensoft.Collections": "3.1.4",
+          "Chickensoft.GodotNodeInterfaces": "3.0.12",
+          "Chickensoft.Introspection": "3.0.2",
+          "GodotSharp": "4.6.2"
+        },
+        "runtime": {
+          "CompositLib.dll": {}
+        }
+      },
+      "Chickensoft.Collections/3.1.4": {
+        "runtime": {
+          "lib/netstandard2.1/Chickensoft.Collections.dll": {
+            "assemblyVersion": "3.1.4.0",
+            "fileVersion": "3.1.4.0"
+          }
+        }
+      },
+      "Chickensoft.GodotNodeInterfaces/3.0.12": {
+        "dependencies": {
+          "GodotSharp": "4.6.2"
+        },
+        "runtime": {
+          "lib/net8.0/Chickensoft.GodotNodeInterfaces.dll": {
+            "assemblyVersion": "3.0.12.0",
+            "fileVersion": "3.0.12.0"
+          }
+        }
+      },
+      "Chickensoft.Introspection/3.0.2": {
+        "dependencies": {
+          "Chickensoft.Collections": "3.1.4"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Chickensoft.Introspection.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
+      "GodotSharp/4.6.2": {
+        "runtime": {
+          "lib/net8.0/GodotSharp.dll": {
+            "assemblyVersion": "4.6.2.0",
+            "fileVersion": "4.6.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CompositLib/1.0.7-alpha.0.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Chickensoft.Collections/3.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uJubXYy9WZEkFFrX/ABkYr8Cth/03OVIam/h/oyxKu114oINuvH6lu0Mm9poXYlvR5JiRvdAmW1nJFZ8uJM9sw==",
+      "path": "chickensoft.collections/3.1.4",
+      "hashPath": "chickensoft.collections.3.1.4.nupkg.sha512"
+    },
+    "Chickensoft.GodotNodeInterfaces/3.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GFbUTpwOrBXWIzqOg24jMFYvqZekIk9BTvKC9ipWaiGj+fukJsnve6A7CzCsoxa9xExqVYTf1zhdEnlML1VT6w==",
+      "path": "chickensoft.godotnodeinterfaces/3.0.12",
+      "hashPath": "chickensoft.godotnodeinterfaces.3.0.12.nupkg.sha512"
+    },
+    "Chickensoft.Introspection/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L+6qrE3CO0XytxONoxTw1K4HKcZsuGSTAu2sb6UrDRQFlnDWkWViIktMlbqUdVjMr10mcQ3fet+27gBdTzqTgQ==",
+      "path": "chickensoft.introspection/3.0.2",
+      "hashPath": "chickensoft.introspection.3.0.2.nupkg.sha512"
+    },
+    "GodotSharp/4.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yWYaxRtawrYOQ6TZqKovkw6IN3jNWLTjfrL+pvoGdprvGT7LOYdBCwy0OU7rSfzTn48Rr4IuyuZoSuC0Cp2JeA==",
+      "path": "godotsharp/4.6.2",
+      "hashPath": "godotsharp.4.6.2.nupkg.sha512"
+    }
+  }
+}

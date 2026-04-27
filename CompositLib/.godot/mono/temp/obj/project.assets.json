@@ -131,6 +131,22 @@
           }
         }
       },
+      "Chickensoft.GodotNodeInterfaces/3.0.12": {
+        "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.6.2"
+        },
+        "compile": {
+          "lib/net8.0/Chickensoft.GodotNodeInterfaces.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Chickensoft.GodotNodeInterfaces.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        }
+      },
       "Chickensoft.Introspection/3.0.2": {
         "type": "package",
         "dependencies": {
@@ -150,13 +166,13 @@
       "Chickensoft.Introspection.Generator/3.0.2": {
         "type": "package"
       },
-      "Godot.SourceGenerators/4.6.1": {
+      "Godot.SourceGenerators/4.6.0": {
         "type": "package",
         "build": {
           "build/Godot.SourceGenerators.props": {}
         }
       },
-      "GodotSharp/4.6.1": {
+      "GodotSharp/4.6.2": {
         "type": "package",
         "compile": {
           "lib/net8.0/GodotSharp.dll": {
@@ -165,22 +181,6 @@
         },
         "runtime": {
           "lib/net8.0/GodotSharp.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "GodotSharpEditor/4.6.1": {
-        "type": "package",
-        "dependencies": {
-          "GodotSharp": "4.6.1"
-        },
-        "compile": {
-          "lib/net8.0/GodotSharpEditor.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/GodotSharpEditor.dll": {
             "related": ".xml"
           }
         }
@@ -275,6 +275,23 @@
         "lib/netstandard2.1/Chickensoft.Collections.xml"
       ]
     },
+    "Chickensoft.GodotNodeInterfaces/3.0.12": {
+      "sha512": "GFbUTpwOrBXWIzqOg24jMFYvqZekIk9BTvKC9ipWaiGj+fukJsnve6A7CzCsoxa9xExqVYTf1zhdEnlML1VT6w==",
+      "type": "package",
+      "path": "chickensoft.godotnodeinterfaces/3.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "chickensoft.godotnodeinterfaces.3.0.12.nupkg.sha512",
+        "chickensoft.godotnodeinterfaces.nuspec",
+        "icon.png",
+        "lib/net8.0/Chickensoft.GodotNodeInterfaces.dll",
+        "lib/net8.0/Chickensoft.GodotNodeInterfaces.runtimeconfig.json",
+        "lib/net8.0/Chickensoft.GodotNodeInterfaces.xml"
+      ]
+    },
     "Chickensoft.Introspection/3.0.2": {
       "sha512": "L+6qrE3CO0XytxONoxTw1K4HKcZsuGSTAu2sb6UrDRQFlnDWkWViIktMlbqUdVjMr10mcQ3fet+27gBdTzqTgQ==",
       "type": "package",
@@ -306,43 +323,30 @@
         "icon.png"
       ]
     },
-    "Godot.SourceGenerators/4.6.1": {
-      "sha512": "cWkxb0mUptImMFeJEq5iM7fsJr1bo+ZPDjGk1ppy9U+ErWZRcrYq7G8IP4jN8BPzsUf6eno86R03AuawUjyItw==",
+    "Godot.SourceGenerators/4.6.0": {
+      "sha512": "zPXb65IjRK6NRAq44Rz5AfI9uZc0RkhOMOVzsYuauaWwbsiKsrM0Dtl1t2A90JGbVV4Tk02qVPa3JrR8haFqIw==",
       "type": "package",
-      "path": "godot.sourcegenerators/4.6.1",
+      "path": "godot.sourcegenerators/4.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "analyzers/dotnet/cs/Godot.SourceGenerators.dll",
         "build/Godot.SourceGenerators.props",
-        "godot.sourcegenerators.4.6.1.nupkg.sha512",
+        "godot.sourcegenerators.4.6.0.nupkg.sha512",
         "godot.sourcegenerators.nuspec"
       ]
     },
-    "GodotSharp/4.6.1": {
-      "sha512": "FQc5iM5ftSAIegboeP7CsOeNtG0GLgjkqNshUHISZhnc8secWLwZqmCPFHGYshVPIqqJFCfQQ5ttjdmNKLKKEw==",
+    "GodotSharp/4.6.2": {
+      "sha512": "yWYaxRtawrYOQ6TZqKovkw6IN3jNWLTjfrL+pvoGdprvGT7LOYdBCwy0OU7rSfzTn48Rr4IuyuZoSuC0Cp2JeA==",
       "type": "package",
-      "path": "godotsharp/4.6.1",
+      "path": "godotsharp/4.6.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "godotsharp.4.6.1.nupkg.sha512",
+        "godotsharp.4.6.2.nupkg.sha512",
         "godotsharp.nuspec",
         "lib/net8.0/GodotSharp.dll",
         "lib/net8.0/GodotSharp.xml"
-      ]
-    },
-    "GodotSharpEditor/4.6.1": {
-      "sha512": "WtUHTHUegXO3OwHXa2pW2a6UIBV3TcVui2lbQ6eQt4RuKSZwuzNGdBy3GYIDJ3pkqJZEjqvM9zA32ARxhUygTQ==",
-      "type": "package",
-      "path": "godotsharpeditor/4.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "godotsharpeditor.4.6.1.nupkg.sha512",
-        "godotsharpeditor.nuspec",
-        "lib/net8.0/GodotSharpEditor.dll",
-        "lib/net8.0/GodotSharpEditor.xml"
       ]
     },
     "MinVer/4.3.0": {
@@ -412,11 +416,11 @@
       "Chickensoft.AutoInject >= 2.12.8",
       "Chickensoft.AutoInject.Analyzers >= 2.12.8",
       "Chickensoft.Collections >= 3.1.4",
+      "Chickensoft.GodotNodeInterfaces >= 3.0.12",
       "Chickensoft.Introspection >= 3.0.2",
       "Chickensoft.Introspection.Generator >= 3.0.2",
-      "Godot.SourceGenerators >= 4.6.1",
-      "GodotSharp >= 4.6.1",
-      "GodotSharpEditor >= 4.6.1",
+      "Godot.SourceGenerators >= 4.6.0",
+      "GodotSharp >= 4.6.2",
       "MinVer >= 4.3.0"
     ]
   },
@@ -465,46 +469,52 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
           "Chickensoft.AutoInject": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.12.8, )"
           },
           "Chickensoft.AutoInject.Analyzers": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.12.8, )"
           },
           "Chickensoft.Collections": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[3.1.4, )"
           },
+          "Chickensoft.GodotNodeInterfaces": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.0.12, )"
+          },
           "Chickensoft.Introspection": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[3.0.2, )"
           },
           "Chickensoft.Introspection.Generator": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[3.0.2, )"
           },
           "Godot.SourceGenerators": {
             "target": "Package",
-            "version": "[4.6.1, )",
+            "version": "[4.6.0, )",
             "autoReferenced": true
           },
           "GodotSharp": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "[4.6.1, )",
-            "autoReferenced": true
-          },
-          "GodotSharpEditor": {
-            "target": "Package",
-            "version": "[4.6.1, )",
-            "autoReferenced": true
+            "version": "[4.6.2, )"
           },
           "MinVer": {
             "suppressParent": "All",
@@ -523,12 +533,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.26, 8.0.26]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.26, 8.0.26]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.26, 8.0.26]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\vidar.ulvegrip\\.dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

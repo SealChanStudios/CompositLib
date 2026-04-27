@@ -45,46 +45,52 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
             "Chickensoft.AutoInject": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.12.8, )"
             },
             "Chickensoft.AutoInject.Analyzers": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.12.8, )"
             },
             "Chickensoft.Collections": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.4, )"
             },
+            "Chickensoft.GodotNodeInterfaces": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.12, )"
+            },
             "Chickensoft.Introspection": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.0.2, )"
             },
             "Chickensoft.Introspection.Generator": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.0.2, )"
             },
             "Godot.SourceGenerators": {
               "target": "Package",
-              "version": "[4.6.1, )",
+              "version": "[4.6.0, )",
               "autoReferenced": true
             },
             "GodotSharp": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[4.6.1, )",
-              "autoReferenced": true
-            },
-            "GodotSharpEditor": {
-              "target": "Package",
-              "version": "[4.6.1, )",
-              "autoReferenced": true
+              "version": "[4.6.2, )"
             },
             "MinVer": {
               "suppressParent": "All",
@@ -103,12 +109,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\vidar.ulvegrip\\.dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
