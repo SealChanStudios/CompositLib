@@ -1,0 +1,11 @@
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\CompositLib.csproj.AssemblyReference.cache
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\CompositLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\CompositLib.csproj.CoreCompileInputs.cache
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\CompositLib.sourcelink.json
+C:\Code\CompositLib\CompositLib\nupkg\CompositLib.deps.json
+C:\Code\CompositLib\CompositLib\nupkg\CompositLib.dll
+C:\Code\CompositLib\CompositLib\nupkg\CompositLib.pdb
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\CompositLib.dll
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\refint\CompositLib.dll
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\CompositLib.pdb
+C:\Code\CompositLib\CompositLib\.godot\mono\temp\obj\Release\ref\CompositLib.dll
