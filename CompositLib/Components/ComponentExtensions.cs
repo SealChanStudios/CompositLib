@@ -12,7 +12,7 @@ public static class ComponentExtensions
   ///
   /// </summary>
   /// <param name="obj">Godot Node.</param>
-  public static T? GetComponent<T>(this Node obj) where T : class, IComponent
+  public static T? GetComponent<T>(this Node obj) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
 
@@ -24,7 +24,7 @@ public static class ComponentExtensions
     return IComponentHost.GetComponent<T>(obj);
   }
 
-  public static bool HasComponent<T>(this Node obj) where T : class, IComponent
+  public static bool HasComponent<T>(this Node obj) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
 
@@ -78,18 +78,18 @@ public static class ComponentExtensions
     }
   }
 
-  public static void AddComponent<T>(this Node obj, Node component) where T : class, IComponent
+  public static void AddComponent<T>(this Node obj, Node component) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.AddComponent<T>(obj, component);
   }
-  public static void AddComponent<T>(this Node obj, T component) where T : Node, IComponent
+  public static void AddComponent<T>(this Node obj, T component) where T : Node,IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
-    IComponentHost.AddComponent(obj, component);
+    IComponentHost.AddComponent<T>(obj, component);
   }
 
-  public static void RemoveComponent<T>(this Node obj) where T : class, IComponent
+  public static void RemoveComponent<T>(this Node obj) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.RemoveComponent<T>(obj);
@@ -120,7 +120,7 @@ public static class ComponentExtensions
 
   // -------- COMPONENT --------
 
-  public static void SetOwner<TComponent>(this IComponent component, IComponentHost host) where TComponent : class, IComponent
+  public static void SetOwner<TComponent>(this IComponent component, IComponentHost host) where TComponent : class, IComponentBase
   {
     component.__SetupIComponentStateIfNeeded<TComponent>(host);
     var state = component.MixinState.Get<ComponentState>();
@@ -164,7 +164,7 @@ public static class ComponentExtensions
 
 #pragma warning disable IDE1006
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  private static void __SetupIComponentStateIfNeeded<T>(this IComponent obj,IComponentHost componentHost) where T : IComponent
+  private static void __SetupIComponentStateIfNeeded<T>(this IComponent obj,IComponentHost componentHost) where T : IComponentBase
   {
     if (obj is not IIntrospectiveRef introspective)
     {
