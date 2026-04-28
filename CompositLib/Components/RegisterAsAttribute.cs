@@ -5,10 +5,10 @@ using System;
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
 public sealed class RegisterAsAttribute : Attribute
 {
-  public Type Type { get; }
+  public Type[] Types { get; }
 
-  public RegisterAsAttribute(Type type)
+  public RegisterAsAttribute(params Type[] type)
   {
-    Type = type;
+    Types = type;
   }
 }

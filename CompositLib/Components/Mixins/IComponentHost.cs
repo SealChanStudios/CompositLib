@@ -24,7 +24,9 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   static void RegisterComponents(Node parent)
   {
     if (parent is not IComponentHost host)
+    {
       throw new InvalidOperationException("Parent is not IComponentHost");
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
 
@@ -34,13 +36,13 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
     foreach (var child in parent.GetChildren())
     {
       if (child is not IComponent component)
+      {
         continue;
-
-      var registeredType = ComponentTypeResolver.Resolve(component.GetType());
+      }
 
       component.SetOwner(host);
 
-      RegisterAllTypes(state, component, registeredType, child);
+      RegisterAllTypes(state, component, child);
     }
   }
 
@@ -63,7 +65,9 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   static bool HasComponent<T>(Node parent) where T : class, IComponentBase
   {
     if (parent is not IComponentHost host)
-      throw new InvalidOperationException("Parent is not IComponentHost");
+    {
+      throw new InvalidOperationException();
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.ContainsKey(typeof(T));
@@ -81,28 +85,24 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   // -----------------------------
   // ADD
   // -----------------------------
+
   static void AddComponent<T>(Node parent, Node node)
     where T : class, IComponentBase
   {
     if (parent is not IComponentHost host)
-      throw new InvalidOperationException("Parent is not IComponentHost");
+      throw new InvalidOperationException();
 
     if (node is not IComponent component)
-      throw new InvalidOperationException("Node is not a component");
+      throw new InvalidOperationException();
 
     var state = host.MixinState.Get<ComponentHostState>();
-    var key = ComponentTypeResolver.Resolve(typeof(T));
-
-    if (state.Components.ContainsKey(key))
-      throw new InvalidOperationException("Component already exists");
 
     component.SetOwner<T>(host);
-
     parent.AddChild(node);
 
-    RegisterAllTypes(state, component, key, node);
+    RegisterAllTypes(state, component, node);
   }
-
+  
   // -----------------------------
   // REMOVE
   // -----------------------------
@@ -110,22 +110,20 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
     where T : class, IComponentBase
   {
     if (parent is not IComponentHost host)
-      throw new InvalidOperationException("Parent is not IComponentHost");
+      throw new InvalidOperationException();
 
     var state = host.MixinState.Get<ComponentHostState>();
-    var key = typeof(T);
 
-    if (!state.ComponentNodes.TryGetValue(key, out var node))
-      throw new InvalidOperationException("Component not found");
+    if (!state.ComponentNodes.TryGetValue(typeof(T), out var node))
+      throw new InvalidOperationException();
 
-    var component = state.Components[key];
+    var component = state.Components[typeof(T)];
+    var keys = ComponentTypeResolver.GetRegistrationKeys(component.GetType());
 
-    var types = GetAllTypes(component.GetType());
-
-    foreach (var t in types)
+    foreach (var key in keys) // cached
     {
-      state.Components.Remove(t);
-      state.ComponentNodes.Remove(t);
+      state.Components.Remove(key);
+      state.ComponentNodes.Remove(key);
     }
 
     parent.RemoveChild(node);
@@ -145,27 +143,19 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   // INTERNAL TYPE SYSTEM
   // -----------------------------
   private static readonly Dictionary<Type, Type[]> _typeCache = new();
-
+  
   private static void RegisterAllTypes(
     ComponentHostState state,
     IComponent component,
-    Type registeredType,
     Node node)
   {
-    var types = GetAllTypes(component.GetType());
+    var keys = ComponentTypeResolver.GetRegistrationKeys(component.GetType());
 
-    foreach (var type in types)
+    foreach (var key in keys) // cached → cheap
     {
-      if (!typeof(IComponentBase).IsAssignableFrom(type))
-        continue;
-
-      state.Components[type] = component;
-      state.ComponentNodes[type] = node;
+      state.Components[key] = component;
+      state.ComponentNodes[key] = node;
     }
-
-    // override wins
-    state.Components[registeredType] = component;
-    state.ComponentNodes[registeredType] = node;
   }
 
   private static Type[] GetAllTypes(Type type)

@@ -1,7 +1,7 @@
 namespace CompositLib.Components.Mixins;
 
-public class ComponentState(IComponentHost owner, Type type)
+public class ComponentState(IComponentHost owner, Type[] types)
 {
     public IComponentHost ComponentOwner { get; set; } = owner;
-    public Type ComponentType { get; set; } = type;
+    public Type[] ComponentTypes { get; set; } = types;
 }

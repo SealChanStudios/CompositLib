@@ -20,10 +20,10 @@ public interface IComponent : IMixin<IComponent>, IAutoNode, IComponentBase
     return state.ComponentOwner;
   }
 
-  static Type GetRegisteredType(IComponent component)
+  static Type[] GetRegisteredType(IComponent component)
   {
     var state = component.MixinState.Get<ComponentState>();
-    return state.ComponentType;
+    return state.ComponentTypes;
   }
 
   static void SetOwner<T>(IComponent component, IComponentHost owner)
@@ -33,7 +33,7 @@ public interface IComponent : IMixin<IComponent>, IAutoNode, IComponentBase
     var oldOwner = state.ComponentOwner;
 
     state.ComponentOwner = owner;
-    state.ComponentType = typeof(T);
+    state.ComponentTypes = ComponentTypeResolver.Resolve(typeof(T));
 
     component.OnOwnershipTransferred(oldOwner);
   }

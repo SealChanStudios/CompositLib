@@ -145,15 +145,15 @@ public static class ComponentExtensions
 
     var state = introspective.MixinState.Get<ComponentState>();
     state.ComponentOwner = host;
-    state.ComponentType = registered;
+    state.ComponentTypes = registered;
   }
 
   public static Type GetRuntimeType(this IComponent component) => component.GetType();
 
-  public static Type GetRegisteredType(this IComponent component)
+  public static Type[] GetRegisteredType(this IComponent component)
   {
     var state = component.MixinState.Get<ComponentState>();
-    return state.ComponentType;
+    return state.ComponentTypes;
   }
 
   public static IComponentHost GetOwner(this IComponent component)
@@ -173,7 +173,7 @@ public static class ComponentExtensions
 
     if (!introspective.MixinState.Has<ComponentState>())
     {
-      introspective.MixinState.Overwrite(new ComponentState(componentHost, typeof(T)));
+      introspective.MixinState.Overwrite(new ComponentState(componentHost, ComponentTypeResolver.Resolve(typeof(T))));
     }
   }
 }
