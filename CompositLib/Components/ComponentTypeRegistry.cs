@@ -8,11 +8,11 @@ namespace CompositLib.Components;
 
 public static class ComponentTypeResolver
 {
-    private static readonly ConcurrentDictionary<Type, Type[]> _cache = new();
+    private static readonly ConcurrentDictionary<Type, Type[]> Cache = new();
 
     public static Type[] Resolve(Type type)
     {
-        return _cache.GetOrAdd(type, t =>
+        return Cache.GetOrAdd(type, t =>
         {
             var result = new HashSet<Type>();
 
@@ -86,7 +86,7 @@ public static class ComponentTypeResolver
     {
         var result = new HashSet<Type>();
         var visited = new HashSet<Type>();
-        var stack = new Stack<Type>();
+        var stack = new Stack<Type?>();
 
         stack.Push(type);
 

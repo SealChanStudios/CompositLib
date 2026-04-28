@@ -118,7 +118,7 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
       throw new InvalidOperationException();
 
     var component = state.Components[typeof(T)];
-    var keys = ComponentTypeResolver.GetRegistrationKeys(component.GetType());
+    var keys = ComponentTypeResolver.Resolve(component.GetType());
 
     foreach (var key in keys) // cached
     {
@@ -149,7 +149,7 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
     IComponent component,
     Node node)
   {
-    var keys = ComponentTypeResolver.GetRegistrationKeys(component.GetType());
+    var keys = ComponentTypeResolver.Resolve(component.GetType());
 
     foreach (var key in keys) // cached → cheap
     {
