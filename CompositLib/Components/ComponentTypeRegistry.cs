@@ -10,49 +10,52 @@ public static class ComponentTypeResolver
 {
     private static readonly ConcurrentDictionary<Type, Type[]> _cache = new();
 
-    public static Type[] Resolve(Type concrete)
+    public static Type[] Resolve(Type type)
     {
-        return _cache.GetOrAdd(concrete, t =>
+        return _cache.GetOrAdd(type, t =>
         {
-            var baseTypes = new HashSet<Type>();
+            var result = new HashSet<Type>();
+
+            // walk full graph (classes + interfaces)
+            var allTypes = GetHierarchyWithInterfaces(t);
+
             Type[]? overrideTypes = null;
 
-            var current = t;
-            while (current != null)
+            foreach (var current in allTypes)
             {
+                // base registrations (merge)
                 var baseAttr = current.GetCustomAttribute<RegisterAsBaseAttribute>(false);
                 if (baseAttr != null)
                 {
                     foreach (var x in baseAttr.Types)
-                        baseTypes.Add(x);
+                        result.Add(x);
                 }
 
+                // override registration (last wins)
                 var overrideAttr = current.GetCustomAttribute<RegisterAsAttribute>(false);
                 if (overrideAttr != null)
                 {
                     overrideTypes = overrideAttr.Types;
                 }
-
-                current = current.BaseType;
             }
 
             if (overrideTypes != null)
             {
                 foreach (var x in overrideTypes)
-                    baseTypes.Add(x);
+                    result.Add(x);
             }
 
-            if (baseTypes.Count == 0)
-                baseTypes.Add(t);
+            if (result.Count == 0)
+                result.Add(t);
 
-            return baseTypes.ToArray();
+            return result.ToArray();
         });
     }
-    private static readonly ConcurrentDictionary<Type, Type[]> _registrationCache = new();
+    private static readonly ConcurrentDictionary<Type, Type[]> RegistrationCache = new();
 
     public static Type[] GetRegistrationKeys(Type type)
     {
-        return _registrationCache.GetOrAdd(type, t =>
+        return RegistrationCache.GetOrAdd(type, t =>
         {
             var set = new HashSet<Type>();
 
@@ -78,6 +81,33 @@ public static class ComponentTypeResolver
                 .Where(x => typeof(IComponentBase).IsAssignableFrom(x))
                 .ToArray();
         });
+    }
+    private static Type[] GetHierarchyWithInterfaces(Type type)
+    {
+        var result = new HashSet<Type>();
+        var visited = new HashSet<Type>();
+        var stack = new Stack<Type>();
+
+        stack.Push(type);
+
+        while (stack.Count > 0)
+        {
+            var current = stack.Pop();
+            if (current == null || !visited.Add(current))
+                continue;
+
+            result.Add(current);
+
+            // class hierarchy
+            if (current.BaseType != null)
+                stack.Push(current.BaseType);
+
+            // interface hierarchy
+            foreach (var i in current.GetInterfaces())
+                stack.Push(i);
+        }
+
+        return result.ToArray();
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace CompositLib.Components;
 
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = false, Inherited = true)]
 public sealed class RegisterAsBaseAttribute : Attribute
 {
     public Type[] Types { get; }
