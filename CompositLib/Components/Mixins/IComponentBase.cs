@@ -1,3 +1,13 @@
-﻿namespace CompositLib.Components.Mixins;
+﻿using Chickensoft.Introspection;
 
-public interface IComponentBase { }
+namespace CompositLib.Components.Mixins;
+
+
+[Mixin]
+public interface IComponentBase : IMixin<IComponentBase>
+{
+    void IMixin<IComponentBase>.Handler()
+    {
+        
+    }
+}

@@ -7,7 +7,12 @@ namespace CompositLib.Components.Mixins;
 public interface IComponent : IMixin<IComponent>, IAutoNode, IComponentBase
 {
   void IMixin<IComponent>.Handler() { }
-  new void Handler() => (this as IAutoNode).Handler();
+
+  new void Handler()
+  {
+    (this as IAutoNode).Handler();
+    (this as IComponentBase).Handler();
+  }
 
   static IComponentHost GetOwner(IComponent component)
   {
