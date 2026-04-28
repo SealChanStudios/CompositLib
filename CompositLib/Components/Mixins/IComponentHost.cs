@@ -52,14 +52,16 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   static T? GetComponent<T>(Node parent) where T : class, IComponentBase
   {
     if (parent is not IComponentHost host)
+    {
       throw new InvalidOperationException("Parent is not IComponentHost");
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
 
-    if (state.Components.TryGetValue(typeof(T), out var cached))
-      return cached as T;
+    if (!state.Components.TryGetValue(typeof(T), out var cached)) return null; 
+    
+    return cached as T;
 
-    return null;
   }
 
   static bool HasComponent<T>(Node parent) where T : class, IComponentBase
@@ -76,7 +78,9 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   static IComponent[] GetComponents(Node parent)
   {
     if (parent is not IComponentHost host)
+    {
       throw new InvalidOperationException("Parent is not IComponentHost");
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.Values.Distinct().ToArray();
@@ -89,11 +93,10 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   static void AddComponent<T>(Node parent, Node node)
     where T : class, IComponentBase
   {
-    if (parent is not IComponentHost host)
+    if (parent is not IComponentHost host || node is not IComponent component)
+    {
       throw new InvalidOperationException();
-
-    if (node is not IComponent component)
-      throw new InvalidOperationException();
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
 
@@ -110,12 +113,16 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
     where T : class, IComponentBase
   {
     if (parent is not IComponentHost host)
+    {
       throw new InvalidOperationException();
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
 
     if (!state.ComponentNodes.TryGetValue(typeof(T), out var node))
+    {
       throw new InvalidOperationException();
+    }
 
     var component = state.Components[typeof(T)];
     var keys = ComponentTypeResolver.Resolve(component.GetType());
@@ -133,7 +140,9 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   static Type[] GetComponentTypes(Node parent)
   {
     if (parent is not IComponentHost host)
+    {
       throw new InvalidOperationException("Parent is not IComponentHost");
+    }
 
     var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.Keys.ToArray();
@@ -161,7 +170,9 @@ public interface IComponentHost : IMixin<IComponentHost>, IAutoNode
   private static Type[] GetAllTypes(Type type)
   {
     if (_typeCache.TryGetValue(type, out var cached))
+    {
       return cached;
+    }
 
     var list = new List<Type>();
 
