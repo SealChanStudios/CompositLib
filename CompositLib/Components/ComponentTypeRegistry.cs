@@ -8,6 +8,8 @@ namespace CompositLib.Components;
 
 public static class ComponentTypeResolver
 {
+    
+    // so this is somewhat cached it could be better. code could also be better.
     private static readonly ConcurrentDictionary<Type, Type[]> Cache = new();
 
     public static Type[] Resolve(Type type)
@@ -18,17 +20,20 @@ public static class ComponentTypeResolver
 
             // walk full graph (classes + interfaces)
             var allTypes = GetHierarchyWithInterfaces(t);
+            var orderedTypes = allTypes.OrderBy(GetInheritanceDepth).ToList();
 
             Type[]? overrideTypes = null;
 
-            foreach (var current in allTypes)
+            foreach (var current in orderedTypes)
             {
                 // base registrations (merge)
                 var baseAttr = current.GetCustomAttribute<RegisterAsBaseAttribute>(false);
                 if (baseAttr != null)
                 {
                     foreach (var x in baseAttr.Types)
+                    {
                         result.Add(x);
+                    }
                 }
 
                 // override registration (last wins)
@@ -42,7 +47,9 @@ public static class ComponentTypeResolver
             if (overrideTypes != null)
             {
                 foreach (var x in overrideTypes)
+                {
                     result.Add(x);
+                }
             }
 
             if (result.Count == 0)
@@ -118,6 +125,16 @@ public static class ComponentTypeResolver
         }
 
         return result.ToArray();
+    }
+    private static int GetInheritanceDepth(Type type)
+    {
+        int depth = 0;
+        while (type.BaseType != null)
+        {
+            depth++;
+            type = type.BaseType;
+        }
+        return depth;
     }
 }
 
