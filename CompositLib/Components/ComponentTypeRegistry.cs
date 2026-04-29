@@ -1,84 +1,75 @@
-﻿
-
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Reflection;
 using CompositLib.Components.Mixins;
 
 namespace CompositLib.Components;
 
-
 public static class ComponentTypeResolver
 {
-    private static readonly Dictionary<Type, Type[]> Cache = new();
-    private static readonly Dictionary<Type, Type[]> RegistrationCache = new();
+    private static readonly ConcurrentDictionary<Type, Type[]> Cache = new();
+    private static readonly ConcurrentDictionary<Type, Type[]> RegistrationCache = new();
+
+    private static readonly ConcurrentDictionary<Type, RegisterAsBaseAttribute?> BaseAttrCache = new();
+
+    private static readonly ConcurrentDictionary<Type, RegisterAsAttribute?> OverrideAttrCache = new();
+
+    private static readonly ConcurrentDictionary<Type, Type[]> InterfaceCache = new();
 
     public static void ClearCaches()
     {
         Cache.Clear();
         RegistrationCache.Clear();
+        BaseAttrCache.Clear();
+        OverrideAttrCache.Clear();
+        InterfaceCache.Clear();
     }
 
     public static Type[] Resolve(Type type)
     {
-        if (Cache.TryGetValue(type, out var cached))
+        return Cache.GetOrAdd(type, ResolveInternal);
+    }
+
+    private static Type[] ResolveInternal(Type type)
+    {
+        HashSet<Type> result = new HashSet<Type>();
+        RegisterAsAttribute? overrideAttr = null;
+
+        for (Type? current = type; current != null; current = current.BaseType)
         {
-            return cached;
-        }
-
-        var result = new HashSet<Type>();
-        var current = type;
-        Type[]? overrideTypes = null;
-
-        var stack = new Stack<Type>();
-        while (current != null)
-        {
-            stack.Push(current);
-            current = current.BaseType;
-        }
-
-        while (stack.Count > 0)
-        {
-            var t = stack.Pop();
-
-            var baseAttr = t.GetCustomAttributes(typeof(RegisterAsBaseAttribute), false)
-                            .FirstOrDefault() as RegisterAsBaseAttribute;
+            RegisterAsBaseAttribute? baseAttr = GetBaseAttr(current);
 
             if (baseAttr != null)
             {
-                foreach (var x in baseAttr.Types)
+                foreach (Type x in baseAttr.Types)
                 {
                     result.Add(x);
                 }
             }
 
-            var overrideAttr = t.GetCustomAttributes(typeof(RegisterAsAttribute), false)
-                                .FirstOrDefault() as RegisterAsAttribute;
-
-            if (overrideAttr != null)
+            if (overrideAttr == null)
             {
-                overrideTypes = overrideAttr.Types;
+                overrideAttr = GetOverrideAttr(current);
             }
         }
 
-        foreach (var i in type.GetInterfaces())
+        foreach (Type i in GetInterfaces(type))
         {
-            var baseAttr = i.GetCustomAttributes(typeof(RegisterAsBaseAttribute), false)
-                            .FirstOrDefault() as RegisterAsBaseAttribute;
+            RegisterAsBaseAttribute? baseAttr = GetBaseAttr(i);
 
             if (baseAttr == null)
             {
                 continue;
             }
 
-            foreach (var x in baseAttr.Types)
+            foreach (Type x in baseAttr.Types)
             {
                 result.Add(x);
             }
         }
 
-        if (overrideTypes != null)
+        if (overrideAttr != null)
         {
-            foreach (var x in overrideTypes)
+            foreach (Type x in overrideAttr.Types)
             {
                 result.Add(x);
             }
@@ -89,41 +80,65 @@ public static class ComponentTypeResolver
             result.Add(type);
         }
 
-        var arr = result.ToArray();
-        Cache[type] = arr;
-        return arr;
+        return result.ToArray();
     }
 
     public static Type[] GetRegistrationKeys(Type type)
     {
-        if (RegistrationCache.TryGetValue(type, out var cached))
-        {
-            return cached;
-        }
+        return RegistrationCache.GetOrAdd(type, GetRegistrationKeysInternal);
+    }
 
-        var set = new HashSet<Type>();
-        var current = type;
+    private static Type[] GetRegistrationKeysInternal(Type type)
+    {
+        HashSet<Type> set = new HashSet<Type>();
 
-        while (current != null)
+        for (Type? current = type; current != null; current = current.BaseType)
         {
             set.Add(current);
 
-            foreach (var i in current.GetInterfaces())
+            foreach (Type i in GetInterfaces(current))
             {
                 set.Add(i);
             }
-
-            current = current.BaseType;
         }
 
-        foreach (var r in Resolve(type))
+        foreach (Type r in Resolve(type))
         {
             set.Add(r);
         }
 
-        var arr = set.Where(x => typeof(IComponentBase).IsAssignableFrom(x)).ToArray();
+        List<Type> list = new List<Type>(set.Count);
 
-        RegistrationCache[type] = arr;
-        return arr;
+        foreach (Type x in set)
+        {
+            if (!typeof(IComponentBase).IsAssignableFrom(x)) continue;
+            list.Add(x);
+        }
+
+        return list.ToArray();
+    }
+
+    private static RegisterAsBaseAttribute? GetBaseAttr(Type t)
+    {
+        return BaseAttrCache.GetOrAdd(t, static type =>
+        {
+            return type.GetCustomAttribute<RegisterAsBaseAttribute>(false);
+        });
+    }
+
+    private static RegisterAsAttribute? GetOverrideAttr(Type t)
+    {
+        return OverrideAttrCache.GetOrAdd(t, static type =>
+        {
+            return type.GetCustomAttribute<RegisterAsAttribute>(false);
+        });
+    }
+
+    private static Type[] GetInterfaces(Type t)
+    {
+        return InterfaceCache.GetOrAdd(t, static type =>
+        {
+            return type.GetInterfaces();
+        });
     }
 }

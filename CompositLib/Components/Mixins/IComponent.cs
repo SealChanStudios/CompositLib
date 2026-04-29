@@ -26,7 +26,7 @@ public interface IComponent : IMixin<IComponent>, IAutoNode, IComponentBase
     return state.ComponentTypes;
   }
 
-  static void SetOwner<T>(IComponent component, IComponentHost owner)
+  static void SetOwner<T>(T component, IComponentHost owner)
     where T : class, IComponentBase
   {
     var state = component.MixinState.Get<ComponentState>();
@@ -37,6 +37,4 @@ public interface IComponent : IMixin<IComponent>, IAutoNode, IComponentBase
 
     component.OnOwnershipTransferred(oldOwner);
   }
-
-  void OnOwnershipTransferred(IComponentHost oldOwner) { }
 }

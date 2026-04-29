@@ -10,4 +10,5 @@ public interface IComponentBase : IMixin<IComponentBase>
     {
         
     }
+    void OnOwnershipTransferred(IComponentHost oldOwner) { }
 }

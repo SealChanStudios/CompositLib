@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qARoWs36ryo=",
+  "dgSpecHash": "RYSFUapmpp0=",
   "success": true,
   "projectFilePath": "C:\\Code\\CompositLib\\CompositLib\\CompositLib.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\godot.sourcegenerators\\4.6.0\\godot.sourcegenerators.4.6.0.nupkg.sha512",
     "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\godotsharp\\4.6.2\\godotsharp.4.6.2.nupkg.sha512",
     "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\godotsharpeditor\\4.6.0\\godotsharpeditor.4.6.0.nupkg.sha512",
-    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\minver\\4.3.0\\minver.4.3.0.nupkg.sha512",
+    "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\minver\\8.0.0-alpha.1\\minver.8.0.0-alpha.1.nupkg.sha512",
     "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.2\\system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512",
     "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.26\\microsoft.netcore.app.ref.8.0.26.nupkg.sha512",
     "C:\\Users\\vidar.ulvegrip\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.26\\microsoft.windowsdesktop.app.ref.8.0.26.nupkg.sha512",
