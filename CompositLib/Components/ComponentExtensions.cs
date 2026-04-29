@@ -120,14 +120,14 @@ public static class ComponentExtensions
 
   // -------- COMPONENT --------
 
-  public static void SetOwner<TComponent>(this IComponent component, IComponentHost host) where TComponent : class, IComponentBase
+  public static void SetOwner<TComponent>(this IComponentBase component, IComponentHost host) where TComponent : class, IComponentBase
   {
     component.__SetupIComponentStateIfNeeded<TComponent>(host);
     var state = component.MixinState.Get<ComponentState>();
     state.ComponentOwner = host;
   }
 
-  public static void SetOwner(this IComponent component, IComponentHost host)
+  public static void SetOwner(this IComponentBase component, IComponentHost host)
   {
     if (component is not IIntrospectiveRef introspective)
     {
@@ -148,15 +148,15 @@ public static class ComponentExtensions
     state.ComponentTypes = registered;
   }
 
-  public static Type GetRuntimeType(this IComponent component) => component.GetType();
+  public static Type GetRuntimeType(this IComponentBase component) => component.GetType();
 
-  public static Type[] GetRegisteredType(this IComponent component)
+  public static Type[] GetRegisteredType(this IComponentBase component)
   {
     var state = component.MixinState.Get<ComponentState>();
     return state.ComponentTypes;
   }
 
-  public static IComponentHost GetOwner(this IComponent component)
+  public static IComponentHost GetOwner(this IComponentBase component)
   {
     var state = component.MixinState.Get<ComponentState>();
     return state.ComponentOwner;
@@ -164,7 +164,7 @@ public static class ComponentExtensions
 
 #pragma warning disable IDE1006
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  private static void __SetupIComponentStateIfNeeded<T>(this IComponent obj,IComponentHost componentHost) where T : IComponentBase
+  private static void __SetupIComponentStateIfNeeded<T>(this IComponentBase obj,IComponentHost componentHost) where T : IComponentBase
   {
     if (obj is not IIntrospectiveRef introspective)
     {
