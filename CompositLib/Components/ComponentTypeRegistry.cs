@@ -6,136 +6,124 @@ using CompositLib.Components.Mixins;
 
 namespace CompositLib.Components;
 
+
 public static class ComponentTypeResolver
 {
-    
-    // so this is somewhat cached it could be better. code could also be better.
-    private static readonly ConcurrentDictionary<Type, Type[]> Cache = new();
+    private static readonly Dictionary<Type, Type[]> Cache = new();
+    private static readonly Dictionary<Type, Type[]> RegistrationCache = new();
+
+    public static void ClearCaches()
+    {
+        Cache.Clear();
+        RegistrationCache.Clear();
+    }
 
     public static Type[] Resolve(Type type)
     {
-        return Cache.GetOrAdd(type, t =>
+        if (Cache.TryGetValue(type, out var cached))
         {
-            var result = new HashSet<Type>();
+            return cached;
+        }
 
-            // walk full graph (classes + interfaces)
-            var allTypes = GetHierarchyWithInterfaces(t);
-            var orderedTypes = allTypes.OrderBy(GetInheritanceDepth).ToList();
+        var result = new HashSet<Type>();
+        var current = type;
+        Type[]? overrideTypes = null;
 
-            Type[]? overrideTypes = null;
+        var stack = new Stack<Type>();
+        while (current != null)
+        {
+            stack.Push(current);
+            current = current.BaseType;
+        }
 
-            foreach (var current in orderedTypes)
+        while (stack.Count > 0)
+        {
+            var t = stack.Pop();
+
+            var baseAttr = t.GetCustomAttributes(typeof(RegisterAsBaseAttribute), false)
+                            .FirstOrDefault() as RegisterAsBaseAttribute;
+
+            if (baseAttr != null)
             {
-                // base registrations (merge)
-                var baseAttr = current.GetCustomAttribute<RegisterAsBaseAttribute>(false);
-                if (baseAttr != null)
-                {
-                    foreach (var x in baseAttr.Types)
-                    {
-                        result.Add(x);
-                    }
-                }
-
-                // override registration (last wins)
-                var overrideAttr = current.GetCustomAttribute<RegisterAsAttribute>(false);
-                if (overrideAttr != null)
-                {
-                    overrideTypes = overrideAttr.Types;
-                }
-            }
-
-            if (overrideTypes != null)
-            {
-                foreach (var x in overrideTypes)
+                foreach (var x in baseAttr.Types)
                 {
                     result.Add(x);
                 }
             }
 
-            if (result.Count == 0)
+            var overrideAttr = t.GetCustomAttributes(typeof(RegisterAsAttribute), false)
+                                .FirstOrDefault() as RegisterAsAttribute;
+
+            if (overrideAttr != null)
             {
-                result.Add(t);
+                overrideTypes = overrideAttr.Types;
             }
+        }
 
-            return result.ToArray();
-        });
-    }
-    private static readonly ConcurrentDictionary<Type, Type[]> RegistrationCache = new();
-
-    public static Type[] GetRegistrationKeys(Type type)
-    {
-        return RegistrationCache.GetOrAdd(type, t =>
+        foreach (var i in type.GetInterfaces())
         {
-            var set = new HashSet<Type>();
+            var baseAttr = i.GetCustomAttributes(typeof(RegisterAsBaseAttribute), false)
+                            .FirstOrDefault() as RegisterAsBaseAttribute;
 
-            // include full hierarchy (cached separately if you want)
-            var current = t;
-            while (current != null)
-            {
-                set.Add(current);
-
-                foreach (var i in current.GetInterfaces())
-                {
-                    set.Add(i);
-                }
-
-                current = current.BaseType;
-            }
-
-            // include attribute-based types
-            var resolved = Resolve(t);
-            foreach (var r in resolved)
-            {
-                set.Add(r);
-            }
-
-            // filter once
-            return set.Where(x => typeof(IComponentBase).IsAssignableFrom(x)).ToArray();
-        });
-    }
-    public static Type[] GetHierarchyWithInterfaces(Type type)
-    {
-        var result = new HashSet<Type>();
-        var visited = new HashSet<Type>();
-        var stack = new Stack<Type?>();
-
-        stack.Push(type);
-
-        while (stack.Count > 0)
-        {
-            var current = stack.Pop();
-            if (current == null || !visited.Add(current))
+            if (baseAttr == null)
             {
                 continue;
             }
 
-            result.Add(current);
-
-            // class hierarchy
-            if (current.BaseType != null)
+            foreach (var x in baseAttr.Types)
             {
-                stack.Push(current.BaseType);
+                result.Add(x);
             }
+        }
 
-            // interface hierarchy
+        if (overrideTypes != null)
+        {
+            foreach (var x in overrideTypes)
+            {
+                result.Add(x);
+            }
+        }
+
+        if (result.Count == 0)
+        {
+            result.Add(type);
+        }
+
+        var arr = result.ToArray();
+        Cache[type] = arr;
+        return arr;
+    }
+
+    public static Type[] GetRegistrationKeys(Type type)
+    {
+        if (RegistrationCache.TryGetValue(type, out var cached))
+        {
+            return cached;
+        }
+
+        var set = new HashSet<Type>();
+        var current = type;
+
+        while (current != null)
+        {
+            set.Add(current);
+
             foreach (var i in current.GetInterfaces())
             {
-                stack.Push(i);
+                set.Add(i);
             }
+
+            current = current.BaseType;
         }
 
-        return result.ToArray();
-    }
-    private static int GetInheritanceDepth(Type type)
-    {
-        int depth = 0;
-        while (type.BaseType != null)
+        foreach (var r in Resolve(type))
         {
-            depth++;
-            type = type.BaseType;
+            set.Add(r);
         }
-        return depth;
+
+        var arr = set.Where(x => typeof(IComponentBase).IsAssignableFrom(x)).ToArray();
+
+        RegistrationCache[type] = arr;
+        return arr;
     }
 }
-
-
