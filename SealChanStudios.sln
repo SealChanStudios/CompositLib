@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositLib", "CompositLib\CompositLib.csproj", "{A56EAE67-DDA2-4825-ABB6-68A78827EFD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeLib", "CompositeLib\CompositeLib.csproj", "{A56EAE67-DDA2-4825-ABB6-68A78827EFD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

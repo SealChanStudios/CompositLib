@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SealChanStudios.CompositLib</id>
+    <version>1.0.7-alpha.0.1</version>
+    <title>CompositLib</title>
+    <authors>Lua-cat</authors>
+    <description>A Library for doing component based code</description>
+    <repository type="git" commit="6b1e1a9f2f1f6059f5b4dab9664f6408237942e2" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Godot.SourceGenerators" version="4.6.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Code\CompositLib\CompositLib\nupkg\CompositLib.dll" target="lib\net8.0\CompositLib.dll" />
+  </files>
+</package>
