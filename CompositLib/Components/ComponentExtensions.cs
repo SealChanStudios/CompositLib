@@ -122,9 +122,9 @@ public static class ComponentExtensions
 
   public static void SetOwner<TComponent>(this IComponentBase component, IComponentHost host) where TComponent : class, IComponentBase
   {
-    component.__SetupIComponentStateIfNeeded<TComponent>(host);
-    var state = component.MixinState.Get<ComponentState>();
-    state.ComponentOwner = host;
+    (component as IComponent)?.__SetupIComponentStateIfNeeded<TComponent>(host);
+    var state =  (component as IComponent)?.MixinState.Get<ComponentState>();
+    state!.ComponentOwner = host;
   }
 
   public static void SetOwner(this IComponentBase component, IComponentHost host)
@@ -152,14 +152,14 @@ public static class ComponentExtensions
 
   public static Type[] GetRegisteredType(this IComponentBase component)
   {
-    var state = component.MixinState.Get<ComponentState>();
-    return state.ComponentTypes;
+    var state =  (component as IComponent)?.MixinState.Get<ComponentState>();
+    return state!.ComponentTypes;
   }
 
   public static IComponentHost GetOwner(this IComponentBase component)
   {
-    var state = component.MixinState.Get<ComponentState>();
-    return state.ComponentOwner;
+    var state = (component as IComponent)?.MixinState.Get<ComponentState>();
+    return state!.ComponentOwner;
   }
 
 #pragma warning disable IDE1006
