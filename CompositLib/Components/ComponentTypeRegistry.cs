@@ -46,7 +46,9 @@ public static class ComponentTypeResolver
             }
 
             if (result.Count == 0)
+            {
                 result.Add(t);
+            }
 
             return result.ToArray();
         });
@@ -66,23 +68,25 @@ public static class ComponentTypeResolver
                 set.Add(current);
 
                 foreach (var i in current.GetInterfaces())
+                {
                     set.Add(i);
+                }
 
                 current = current.BaseType;
             }
 
             // include attribute-based types
-            var resolved = ComponentTypeResolver.Resolve(t);
+            var resolved = Resolve(t);
             foreach (var r in resolved)
+            {
                 set.Add(r);
+            }
 
             // filter once
-            return set
-                .Where(x => typeof(IComponentBase).IsAssignableFrom(x))
-                .ToArray();
+            return set.Where(x => typeof(IComponentBase).IsAssignableFrom(x)).ToArray();
         });
     }
-    private static Type[] GetHierarchyWithInterfaces(Type type)
+    public static Type[] GetHierarchyWithInterfaces(Type type)
     {
         var result = new HashSet<Type>();
         var visited = new HashSet<Type>();
@@ -94,17 +98,23 @@ public static class ComponentTypeResolver
         {
             var current = stack.Pop();
             if (current == null || !visited.Add(current))
+            {
                 continue;
+            }
 
             result.Add(current);
 
             // class hierarchy
             if (current.BaseType != null)
+            {
                 stack.Push(current.BaseType);
+            }
 
             // interface hierarchy
             foreach (var i in current.GetInterfaces())
+            {
                 stack.Push(i);
+            }
         }
 
         return result.ToArray();
