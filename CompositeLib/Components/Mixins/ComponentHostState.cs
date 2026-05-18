@@ -6,4 +6,5 @@ public class ComponentHostState
 {
     public Dictionary<Type, IComponent> Components { get; } = new();
     public Dictionary<Type, Node> ComponentNodes { get; } = new();
+    public Node Self { get; set; }
 }

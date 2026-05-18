@@ -13,7 +13,7 @@ public static class ComponentExtensions
     return IComponentHost.GetComponent<T>(obj);
   }
 
-  public static void Setup(this IComponentHost obj,int what)
+  public static void Setup(this Node obj,int what)
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.InvokeNotificationMethods(obj,what);
@@ -59,24 +59,24 @@ public static class ComponentExtensions
     }
   }
 
-  public static void AddComponent<T>(this Node obj, Node component) where T : class, IComponentBase
+  public static void AddComponent<T>(this IComponentHost obj, Node component) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.AddComponent<T>(obj, component);
   }
-  public static void AddComponent<T>(this Node obj, T component) where T : Node,IComponentBase
+  public static void AddComponent<T>(this IComponentHost obj, T component) where T : Node,IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.AddComponent<T>(obj, component);
   }
 
-  public static void RemoveComponent<T>(this Node obj) where T : class, IComponentBase
+  public static void RemoveComponent<T>(this IComponentHost obj) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.RemoveComponent<T>(obj);
   }
 
-  public static void RegisterComponents(this Node obj)
+  public static void RegisterComponents(this IComponentHost obj)
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.RegisterComponents(obj);

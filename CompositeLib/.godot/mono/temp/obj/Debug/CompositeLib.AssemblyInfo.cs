@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A Library for doing component based code")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfa7693c7fee886413c15173cce354233fe9dee8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cfccd68ac2b584eae59d695a5e45a25603df869")]
 [assembly: System.Reflection.AssemblyProductAttribute("CompositeLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CompositeLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

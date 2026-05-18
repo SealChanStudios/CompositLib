@@ -8,6 +8,15 @@ public interface IComponentHost : IMixin<IComponentHost>
 {
   void IMixin<IComponentHost>.Handler() { }
 
+  static Node GetSelf(IComponentHost self)
+  {
+    return self.MixinState.Get<ComponentHostState>().Self;
+  }
+  Node GetSelf()
+  {
+    return MixinState.Get<ComponentHostState>().Self;
+  }
+
   static void InvokeNotificationMethods(object? obj, int what)
   {
     if (obj is not IComponentHost host || obj is not Node)
@@ -16,6 +25,7 @@ public interface IComponentHost : IMixin<IComponentHost>
     }
 
     if (what != Node.NotificationReady) return;
+    host.MixinState.Get<ComponentHostState>().Self = (Node)obj;
     host.RegisterComponentsOnReady();
     host.OnHostReady();
   }
@@ -26,7 +36,7 @@ public interface IComponentHost : IMixin<IComponentHost>
     {
       throw new InvalidOperationException("This is not a IComponentHost");
     }
-    RegisterComponents(this as Node);
+    RegisterComponents(this);
   }
 
   void OnHostReady() { }
@@ -34,7 +44,7 @@ public interface IComponentHost : IMixin<IComponentHost>
   // -----------------------------
   // REGISTER
   // -----------------------------
-  static void RegisterComponents(Node parent)
+  static void RegisterComponents(IComponentHost parent)
   {
     if (parent is not IComponentHost host)
     {
@@ -46,7 +56,7 @@ public interface IComponentHost : IMixin<IComponentHost>
     state.Components.Clear();
     state.ComponentNodes.Clear();
 
-    foreach (var child in parent.GetChildren())
+    foreach (var child in host.GetSelf().GetChildren())
     {
       if (child is not IComponent component)
       {
@@ -91,10 +101,10 @@ public interface IComponentHost : IMixin<IComponentHost>
   // ADD
   // -----------------------------
 
-  static void AddComponent<T>(Node parent, Node node)
+  static void AddComponent<T>(IComponentHost host, Node node)
     where T : class, IComponentBase
   {
-    if (parent is not IComponentHost host || node is not IComponent component)
+    if (node is not IComponent component)
     {
       throw new InvalidOperationException();
     }
@@ -102,7 +112,7 @@ public interface IComponentHost : IMixin<IComponentHost>
     var state = host.MixinState.Get<ComponentHostState>();
 
     component.SetOwner<T>(host);
-    parent.AddChild(node);
+    host.GetSelf().AddChild(node);
 
     RegisterAllTypes(state, component, node);
   }
@@ -110,14 +120,9 @@ public interface IComponentHost : IMixin<IComponentHost>
   // -----------------------------
   // REMOVE
   // -----------------------------
-  static void RemoveComponent<T>(Node parent)
+  static void RemoveComponent<T>(IComponentHost host)
     where T : class, IComponentBase
   {
-    if (parent is not IComponentHost host)
-    {
-      throw new InvalidOperationException();
-    }
-
     var state = host.MixinState.Get<ComponentHostState>();
 
     if (!state.ComponentNodes.TryGetValue(typeof(T), out var node))
@@ -134,7 +139,7 @@ public interface IComponentHost : IMixin<IComponentHost>
       state.ComponentNodes.Remove(key);
     }
 
-    parent.RemoveChild(node);
+    host.GetSelf().RemoveChild(node);
     node.QueueFree();
   }
 
