@@ -62,13 +62,8 @@ public interface IComponentHost : IMixin<IComponentHost>
   // -----------------------------
   // GET
   // -----------------------------
-  static T? GetComponent<T>(Node parent) where T : class, IComponentBase
+  static T? GetComponent<T>(IComponentHost host) where T : class, IComponentBase
   {
-    if (parent is not IComponentHost host)
-    {
-      throw new InvalidOperationException("Parent is not IComponentHost");
-    }
-
     var state = host.MixinState.Get<ComponentHostState>();
 
     if (!state.Components.TryGetValue(typeof(T), out var cached))
@@ -80,24 +75,14 @@ public interface IComponentHost : IMixin<IComponentHost>
 
   }
 
-  static bool HasComponent<T>(Node parent) where T : class, IComponentBase
+  static bool HasComponent<T>(IComponentHost host) where T : class, IComponentBase
   {
-    if (parent is not IComponentHost host)
-    {
-      throw new InvalidOperationException();
-    }
-
     var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.ContainsKey(typeof(T));
   }
 
-  static IComponent[] GetComponents(Node parent)
+  static IComponent[] GetComponents(IComponentHost host)
   {
-    if (parent is not IComponentHost host)
-    {
-      throw new InvalidOperationException("Parent is not IComponentHost");
-    }
-
     var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.Values.Distinct().ToArray();
   }
@@ -153,13 +138,8 @@ public interface IComponentHost : IMixin<IComponentHost>
     node.QueueFree();
   }
 
-  static Type[] GetComponentTypes(Node parent)
+  static Type[] GetComponentTypes(IComponentHost host)
   {
-    if (parent is not IComponentHost host)
-    {
-      throw new InvalidOperationException("Parent is not IComponentHost");
-    }
-
     var state = host.MixinState.Get<ComponentHostState>();
     return state.Components.Keys.ToArray();
   }

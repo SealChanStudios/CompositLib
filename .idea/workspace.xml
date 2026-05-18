@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d70ba8df-366e-486e-893a-41220a5e2b6e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CompositeLib/.godot/mono/temp/obj/Debug/CompositeLib.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CompositeLib/.godot/mono/temp/obj/Debug/CompositeLib.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CompositeLib/.godot/mono/temp/obj/Debug/CompositeLib.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CompositeLib/.godot/mono/temp/obj/Debug/CompositeLib.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CompositeLib/.godot/mono/temp/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/CompositeLib/.godot/mono/temp/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,21 +17,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Lua-cat"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Lua-cat&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/SealChanStudios/CompositLib.git",
+    "url": "https://github.com/SealChanStudios/CompositeLib.git",
     "accountId": "1108f975-85ca-4165-aa25-bfbd62c2c79e"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CompositeLib/Components/ComponentExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CompositeLib/Components/Mixins/IComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="3CwMQFJeFTlA6hPUSGOvnIzMMjF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,7 +48,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -60,6 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1777292161556</updated>
       <workItem from="1777292162617" duration="413000" />
+      <workItem from="1779089978395" duration="83000" />
     </task>
     <servers />
   </component>

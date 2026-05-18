@@ -7,61 +7,36 @@ namespace CompositeLib.Components;
 
 public static class ComponentExtensions
 {
-  /// <summary>
-  ///
-  ///
-  /// </summary>
-  /// <param name="obj">Godot Node.</param>
-  public static T? GetComponent<T>(this Node obj) where T : class, IComponentBase
+  public static T? GetComponent<T>(this IComponentHost obj) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
-
-    if (obj is not IComponentHost)
-    {
-      throw new InvalidOperationException("Node must implement IComponentHost to use GetComponent.");
-    }
-
     return IComponentHost.GetComponent<T>(obj);
   }
 
-  public static void Setup<TNode>(this TNode obj,int what) where TNode : Node, IComponentHost
+  public static void Setup(this IComponentHost obj,int what)
   {
     obj.__SetupIComponentHostStateIfNeeded();
     IComponentHost.InvokeNotificationMethods(obj,what);
   }
 
-  public static bool HasComponent<T>(this Node obj) where T : class, IComponentBase
+  public static bool HasComponent<T>(this IComponentHost obj) where T : class, IComponentBase
   {
     obj.__SetupIComponentHostStateIfNeeded();
-
-    if (obj is not IComponentHost)
-    {
-      throw new InvalidOperationException("Node must implement IComponentHost to use GetComponent.");
-    }
     return IComponentHost.HasComponent<T>(obj);
   }
 
-  public static IComponent[] GetComponents(this Node obj)
+  public static IComponent[] GetComponents(this IComponentHost obj)
   {
     obj.__SetupIComponentHostStateIfNeeded();
-    if (obj is not IComponentHost)
-    {
-      throw new InvalidOperationException("Node must implement IComponentHost to use GetComponent.");
-    }
     return IComponentHost.GetComponents(obj);
   }
 
 
   //prints the actual type of the component irrelevant of what it says it is in the
   //Component registry
-  public static void PrintComponents(this Node host)
+  public static void PrintComponents(this IComponentHost host)
   {
     host.__SetupIComponentHostStateIfNeeded();
-
-    if (host is not IComponentHost)
-    {
-      throw new InvalidOperationException("Node must implement IComponentHost to use PrintComponents.");
-    }
 
     var components = IComponentHost.GetComponents(host);
 
@@ -72,7 +47,7 @@ public static class ComponentExtensions
   }
 
   //prints types of components as registered in the component registry
-  public static void PrintComponentsType(this Node host)
+  public static void PrintComponentsType(this IComponentHost host)
   {
     host.__SetupIComponentHostStateIfNeeded();
 
@@ -107,11 +82,23 @@ public static class ComponentExtensions
     IComponentHost.RegisterComponents(obj);
   }
 
-
-#pragma warning disable IDE1006
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
   private static void __SetupIComponentHostStateIfNeeded(this Node obj)
   {
+    if (obj is not IComponentHost host)
+    {
+      throw new ArgumentNullException($"can't setup component host state on non component host on null object");
+    }
+    // ReSharper disable once SuspiciousTypeConversion.Global
+    host.__SetupIComponentHostStateIfNeeded();
+  }
+  
+  
+#pragma warning disable IDE1006
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
+  private static void __SetupIComponentHostStateIfNeeded(this IComponentHost obj)
+  {
+    
     if (obj is not IIntrospectiveRef introspective)
     {
       return;
