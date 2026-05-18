@@ -104,9 +104,11 @@ public static class ComponentHostExtensions
       return;
     }
 
+    var state = new ComponentHostState();
+    state.Self = obj as Node;
     if (!introspective.MixinState.Has<ComponentHostState>())
     {
-      introspective.MixinState.Overwrite(new ComponentHostState());
+      introspective.MixinState.Overwrite(state);
     }
   }
 }
