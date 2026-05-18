@@ -131,9 +131,9 @@ public interface IComponentHost : IMixin<IComponentHost>
     }
 
     var component = state.Components[typeof(T)];
-    var keys = ComponentTypeResolver.Resolve(component.GetType());
+    var keys = ComponentTypeResolver.Resolve(component.GetType()); // cached
+    foreach (var key in keys)
 
-    foreach (var key in keys) // cached
     {
       state.Components.Remove(key);
       state.ComponentNodes.Remove(key);
@@ -159,9 +159,9 @@ public interface IComponentHost : IMixin<IComponentHost>
     IComponent component,
     Node node)
   {
-    var keys = ComponentTypeResolver.Resolve(component.GetType());
+    var keys = ComponentTypeResolver.Resolve(component.GetType()); // cached
 
-    foreach (var key in keys) // cached → cheap
+    foreach (var key in keys)
     {
       state.Components[key] = component;
       state.ComponentNodes[key] = node;
